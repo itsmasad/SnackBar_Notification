@@ -17,16 +17,46 @@ class _HomeState extends State<Home> {
     _skey.currentState.showSnackBar(new SnackBar(content: new Text('Activated Button')));
   }
 
+ void alertdialog(){
+showDialog(context: context,
+
+builder: (BuildContext){
+  return AlertDialog(
+    title: Text('Alert Box'),
+    content: Text('This is the content of Alert Box'),
+    actions: <Widget> [
+TextButton(onPressed: (){
+  Navigator.pop(context);
+},
+child: Text('Aprove')
+)
+    ],
+  );
+}
+);
+
+ }
+
   Widget build(BuildContext context) {
     return Scaffold(
       key: _skey,
       body: Center(
-          child: new ElevatedButton(
-              onPressed: () {
-                method1();
-              },
-              child: Text('Activated Button')
-              )
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              new ElevatedButton(
+                  onPressed: () {
+                    method1();
+                  },
+                  child: Text('Activated Button')
+                  ),
+                  ElevatedButton(onPressed: (){alertdialog();},
+                  child: Text('Click me for alert')
+                  )
+            ],
+            
+          )
+
               ),
     );
   }
